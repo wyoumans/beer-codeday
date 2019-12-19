@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Pairing;
 use App\Http\Resources\PairingCollection;
 use App\Http\Resources\PairingResource;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class PairingController extends Controller

@@ -11,5 +11,5 @@ class PairingCollection extends ResourceCollection
      *
      * @var string
      */
-    public $collects = \App\Http\Resources\ArgumentResource::class;
+    public $collects = \App\Http\Resources\BeerResource::class;
 }

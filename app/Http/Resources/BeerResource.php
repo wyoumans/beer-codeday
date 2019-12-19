@@ -22,7 +22,7 @@ class BeerResource extends JsonResource
             'description' => $this->description,
             'image_url' => $this->image_url,
             'abv' => $this->abv,
-            'pairings' => new PairingCollection($this->pairings),
+            'pairings' => $this->pairings ? new PairingCollection($this->pairings) : [],
         ];
     }
 }
