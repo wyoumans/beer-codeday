@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'SpaController@index')->name('spa.index');
+Route::get('/beers', 'SpaController@index')->name('spa.index');
+Route::get('/beers/{beer}', 'SpaController@index')->name('spa.index');

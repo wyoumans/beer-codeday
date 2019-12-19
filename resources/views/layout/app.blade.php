@@ -26,7 +26,7 @@
                     <i class="far fa-hamburger"></i>
                 </div>
                 <h1 class="text-center mt-4 mb-8 text-2xl">
-                    Beer Pairings
+                    <a href="/">Beer Pairings</a>
                 </h1>
             </div>
 

@@ -22,6 +22,8 @@ Vue.use(VueProgressBar, progressBarOptions);
 
 // public components
 import Home from "./components/Home";
+import Beers from "./components/Beers";
+import BeerDetails from "./components/BeerDetails";
 
 // router
 const router = new VueRouter({
@@ -31,6 +33,16 @@ const router = new VueRouter({
             path: "/",
             name: "home",
             component: Home
+        },
+        {
+            path: "/beers",
+            name: "beers",
+            component: Beers
+        },
+        {
+            path: "/beers/:id",
+            name: "beer-details",
+            component: BeerDetails
         }
     ]
 });

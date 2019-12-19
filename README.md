@@ -179,6 +179,43 @@ GET to `/api/beers/{id}`
 }
 ```
 
+#### Get a random beer
+
+GET to `/api/beers/random`
+
+# Responses
+
+`200` success
+
+# Sample response
+
+```
+{
+    "data": {
+        "id": 1,
+        "punk_id": 1,
+        "name": "Buzz",
+        "tagline": "A Real Bitter Experience.",
+        "description": "A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.",
+        "image_url": "https:\/\/images.punkapi.com\/v2\/keg.png",
+        "abv": 4.5,
+        "recipes": [{
+            "id": 1,
+            "edamam_id": "1ca6edf86437b485c63d4f02ab4836d7",
+            "url": "http:\/\/www.seriouseats.com\/recipes\/2009\/01\/dinner-tonight-quick-tikka-masala-recipe.html",
+            "label": "Dinner Tonight: Quick Tikka Masala Recipe",
+            "source": "Serious Eats",
+            "image_url": "https:\/\/www.edamam.com\/web-img\/80b\/80bee0722fe8dfaac16863fa139f2c1f.jpg",
+            "share_url": "http:\/\/www.edamam.com\/recipe\/dinner-tonight-quick-tikka-masala-recipe-3cbf430db35f429e11f919e656e61c64\/spicy+chicken+tikka+masala"
+        },
+
+        ...
+
+        ]
+    }
+}
+```
+
 ### Recipes
 
 #### Get all recipes
