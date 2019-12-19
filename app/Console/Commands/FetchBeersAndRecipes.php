@@ -49,7 +49,7 @@ class FetchBeersAndRecipes extends Command
             // fetch the next page of beers
             $beers = $this->getPageOfBeers(++$page);
 
-            $beers->each(function($beer) {
+            $beers->each(function ($beer) {
                 // create or update the local cache
                 $localBeer = Beer::updateOrCreate([
                     'punk_id' => $beer->id,
@@ -61,14 +61,15 @@ class FetchBeersAndRecipes extends Command
                     'abv' => $beer->abv,
                 ]);
 
-                // lookup recipes if this beer does not already have some
-                if(is_array($beer->food_pairing) && $localBeer->recipes()->count() == 0) {
+                // because of the low API rate limit in Edamam, we only run the query if the
+                // beer does not have any existing pairings
+                if (is_array($beer->food_pairing) && $localBeer->recipes()->count() == 0) {
                     $recipeIds = [];
-                    foreach($beer->food_pairing as $pairing) {
+                    foreach ($beer->food_pairing as $pairing) {
                         $recipes = $this->getRecipes($pairing);
 
-                        if($recipes && $recipes->count()) {
-                            $recipes->each(function($recipe) use ($pairing, &$recipeIds) {
+                        if ($recipes && $recipes->count()) {
+                            $recipes->each(function ($recipe) use ($pairing, &$recipeIds) {
                                 // Edamam does not include a useful id,
                                 // so we'll create one by hashing the uri
                                 $id = md5($recipe->uri);
@@ -96,7 +97,7 @@ class FetchBeersAndRecipes extends Command
 
             // keep a tally
             $count += $beers->count();
-        } while($beers->count() > 0 && $page < $maxPages);
+        } while ($beers->count() > 0 && $page < $maxPages);
 
         $this->line(PHP_EOL . "Complete. $count beers fetched." . PHP_EOL);
     }
@@ -125,7 +126,8 @@ class FetchBeersAndRecipes extends Command
      *
      * @return Collection
      */
-    private function getPageOfBeers($page = 0) {
+    private function getPageOfBeers($page = 0)
+    {
         // Fetch the beers list
         $response = $this->getBeers([
             'page' => $page
@@ -137,12 +139,11 @@ class FetchBeersAndRecipes extends Command
 
             // Stop execution if we did not get the okay from the server
             if ($code !== 200) {
-                throw new \Exception("$code response received from the server");
+                throw new \Exception("$code response received from the punk api server");
             }
 
             return collect($json);
-
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->error($e->getMessage());
         }
 
@@ -176,19 +177,20 @@ class FetchBeersAndRecipes extends Command
             $json = json_decode($response->getBody());
 
             if ($code == 200 && property_exists($json, 'hits')) {
-                return collect($json->hits)->map(function($recipe) {
+                return collect($json->hits)->map(function ($recipe) {
                     // right now, we only care about the actual recipe
                     return $recipe->recipe;
                 });
             }
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->error($e->getMessage());
         }
 
         return null;
     }
 
-    private function setupClient() {
+    private function setupClient()
+    {
         // set the headers
         $headers = [
             'Accept' => 'application/json',
@@ -197,7 +199,7 @@ class FetchBeersAndRecipes extends Command
         $this->client = new Client([
             'headers' => $headers,
             'http_errors' => false,
-            'exceptions'  => false,
+            'exceptions' => false,
         ]);
     }
 }

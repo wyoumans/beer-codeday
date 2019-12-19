@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       beers: [],
-      page: -1,
+      page: 0,
       showMoreButton: true
     };
   },
