@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="flex flex-wrap" v-cloak>
+  <div v-cloak>
+    <div class="flex flex-wrap">
       <beer v-for="beer in beers" :beer="beer" :key="beer.id"></beer>
     </div>
 
@@ -41,12 +41,10 @@ export default {
   methods: {
     getBeers() {
       this.page++;
-      this.loading = true;
       this.$Progress.start();
 
       axios.get("/api/beers?page=" + this.page)
         .then(({ data }) => {
-          this.loading = false;
           this.beers = this.beers.concat(data.data);
           this.$Progress.finish();
 
