@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Api;
 
-use App\Beer;
 use App\Recipe;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
