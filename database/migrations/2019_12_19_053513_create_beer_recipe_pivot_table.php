@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePairingsTable extends Migration
+class CreateBeerRecipePivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreatePairingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pairings', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
+        Schema::create('beer_recipe', function (Blueprint $table) {
+            $table->integer('beer_id');
+            $table->integer('recipe_id');
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreatePairingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pairings');
+        Schema::dropIfExists('beer_recipe');
     }
 }

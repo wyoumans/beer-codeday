@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PairingResource extends JsonResource
+class RecipeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,7 +16,12 @@ class PairingResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'edamam_id' => $this->edamam_id,
+            'url' => $this->url,
+            'label' => $this->label,
+            'source' => $this->source,
+            'image_url' => $this->image_url,
+            'share_url' => $this->share_url,
         ];
     }
 }

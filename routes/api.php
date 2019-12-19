@@ -12,9 +12,9 @@
 */
 
 // Beers
-Route::get('/beers/{beer}', 'Api\BeerController@show')->name('api.beer.show');
-Route::get('/beers', 'Api\BeerController@index')->name('api.beer.index');
+Route::get('/beers/{beer}', 'Api\BeerController@show')->name('api.beers.show');
+Route::get('/beers', 'Api\BeerController@index')->name('api.beers.index');
 
-// Pairings
-Route::get('/pairings/{pairing}', 'Api\PairingController@show')->name('api.pairing.show');
-Route::get('/pairings', 'Api\PairingController@index')->name('api.pairing.index');
+// Recipe
+Route::get('/recipes/{recipe}', 'Api\RecipeController@show')->name('api.recipes.show');
+Route::get('/recipes', 'Api\RecipeController@index')->name('api.recipes.index');

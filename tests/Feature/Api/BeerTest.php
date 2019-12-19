@@ -3,7 +3,7 @@
 namespace Tests\Feature\Api;
 
 use App\Beer;
-use App\Pairing;
+use App\Recipe;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -27,8 +27,8 @@ class BeerTest extends TestCase
     public function testCanFetchASingleBeer()
     {
         $beer = factory(Beer::class)->create();
-        $pairings = factory(Pairing::class, 2)->create();
-        $beer->pairings()->sync($pairings->pluck('id'));
+        $recipes = factory(Recipe::class, 2)->create();
+        $beer->recipes()->sync($recipes->pluck('id')->all());
 
         $this
             ->json('GET', '/api/beers/' . $beer->id)
@@ -37,10 +37,10 @@ class BeerTest extends TestCase
                 'data' => [
                     'id' => $beer->id,
                     'name' => $beer->name,
-                    'pairings' => $pairings->map(function ($pairing) {
+                    'recipes' => $recipes->map(function ($recipe) {
                         return [
-                            'id' => $pairing->id,
-                            'name' => $pairing->name,
+                            'id' => $recipe->id,
+                            'url' => $recipe->url,
                         ];
                     })->toArray(),
                 ],

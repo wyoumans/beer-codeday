@@ -4,23 +4,23 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Beer extends Model
+class Recipe extends Model
 {
     protected $fillable = [
-        'punk_id',
-        'name',
-        'tagline',
-        'description',
+        'edamam_id',
+        'url',
+        'label',
+        'source',
         'image_url',
-        'abv',
+        'share_url',
     ];
 
     /**
-     * The recipes that belong to the beer.
+     * The beer that belong to the pairing.
      */
-    public function recipes()
+    public function beers()
     {
-        return $this->belongsToMany('App\Recipe')
+        return $this->belongsToMany('App\Beer')
             ->withPivot('name')
             ->as('pairing')
             ->withTimestamps();
