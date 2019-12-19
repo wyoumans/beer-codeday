@@ -12,6 +12,7 @@
 */
 
 // Beers
+Route::get('/beers/random', 'Api\BeerController@random')->name('api.beers.random');
 Route::get('/beers/{beer}', 'Api\BeerController@show')->name('api.beers.show');
 Route::get('/beers', 'Api\BeerController@index')->name('api.beers.index');
 

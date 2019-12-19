@@ -54,18 +54,19 @@ class BeerTest extends TestCase
             ->assertStatus(404);
     }
 
-    // public function testCanFetchARandomBeer()
-    // {
-    //     $beer = factory(Beer::class)->create();
+    public function testCanFetchARandomBeer()
+    {
+        $beer = factory(Beer::class)->create();
 
-    //     $this
-    //         ->json('GET', '/api/beers/random')
-    //         ->assertSuccessful()
-    //         ->assertJson([
-    //             'data' => [
-    //                 'id' => $beer->id,
-    //                 'name' => $beer->name,
-    //             ],
-    //         ]);
-    // }
+        $this
+            ->json('GET', '/api/beers/random')
+            ->assertSuccessful()
+            ->assertJson([
+                'data' => [
+                    'id' => $beer->id,
+                    'punk_id' => $beer->punk_id,
+                    'name' => $beer->name,
+                ],
+            ]);
+    }
 }

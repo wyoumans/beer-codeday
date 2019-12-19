@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class BeerController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Get a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -21,7 +21,7 @@ class BeerController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Get the specified resource.
      *
      * @param  \App\Beer  $beer
      * @return \Illuminate\Http\Response
@@ -29,5 +29,17 @@ class BeerController extends Controller
     public function show(Beer $beer)
     {
         return new BeerResource($beer);
+    }
+
+    /**
+     * Get a random resouce
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function random()
+    {
+        return new BeerResource(
+            Beer::inRandomOrder()->first()
+        );
     }
 }

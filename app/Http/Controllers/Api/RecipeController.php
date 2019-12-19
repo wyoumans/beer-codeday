@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class RecipeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Get a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -21,7 +21,7 @@ class RecipeController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Get the specified resource.
      *
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
