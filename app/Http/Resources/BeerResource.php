@@ -22,8 +22,7 @@ class BeerResource extends JsonResource
             'description' => $this->description,
             'image_url' => $this->image_url,
             'abv' => $this->abv,
-            'created_at' => !is_null($this->created_at) ? $this->created_at->format('m/d/Y') : null,
-            'updated_at' => !is_null($this->updated_at) ? $this->updated_at->format('m/d/Y') : null,
+            'pairings' => new PairingCollection($this->pairings),
         ];
     }
 }

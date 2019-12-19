@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Pairing;
+use App\Http\Resources\PairingCollection;
+use App\Http\Resources\PairingResource;
 use Illuminate\Http\Request;
 
 class PairingController extends Controller
@@ -14,7 +16,7 @@ class PairingController extends Controller
      */
     public function index()
     {
-        //
+        return new PairingCollection(Pairing::paginate());
     }
 
     /**
@@ -25,6 +27,6 @@ class PairingController extends Controller
      */
     public function show(Pairing $pairing)
     {
-        //
+        return new PairingResource($pairing);
     }
 }

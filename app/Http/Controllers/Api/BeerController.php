@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Beer;
+use App\Http\Resources\BeerCollection;
+use App\Http\Resources\BeerResource;
 use Illuminate\Http\Request;
 
 class BeerController extends Controller
@@ -14,7 +16,7 @@ class BeerController extends Controller
      */
     public function index()
     {
-        //
+        return new BeerCollection(Beer::paginate());
     }
 
     /**
@@ -25,7 +27,6 @@ class BeerController extends Controller
      */
     public function show(Beer $beer)
     {
-        //
+        return new BeerResource($beer);
     }
-
 }
