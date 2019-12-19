@@ -43,7 +43,7 @@ class FetchBeersAndRecipes extends Command
         $this->setupClient();
 
         $page = $count = 0;
-        $maxPages = 1; // prevent runaway
+        $maxPages = 100; // prevent runaway
 
         do {
             // fetch the next page of beers

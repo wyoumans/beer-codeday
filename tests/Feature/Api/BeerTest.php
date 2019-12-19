@@ -36,11 +36,11 @@ class BeerTest extends TestCase
             ->assertJson([
                 'data' => [
                     'id' => $beer->id,
-                    'name' => $beer->name,
+                    'punk_id' => $beer->punk_id,
                     'recipes' => $recipes->map(function ($recipe) {
                         return [
                             'id' => $recipe->id,
-                            'url' => $recipe->url,
+                            'edamam_id' => $recipe->edamam_id,
                         ];
                     })->toArray(),
                 ],

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api;
 
+use App\Beer;
 use App\Recipe;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -32,7 +33,7 @@ class RecipeTest extends TestCase
             ->assertJson([
                 'data' => [
                     'id' => $recipe->id,
-                    'url' => $recipe->url,
+                    'edamam_id' => $recipe->edamam_id,
                 ],
             ]);
     }
