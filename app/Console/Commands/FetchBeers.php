@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Beer;
+use App\Pairing;
 use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 
@@ -39,7 +40,8 @@ class FetchBeers extends Command
             $beers = $this->fetchPage(++$page);
 
             $beers->each(function($beer) {
-                Beer::updateOrCreate([
+                // create or update the local cache
+                $localBeer = Beer::updateOrCreate([
                     'punk_id' => $beer->id,
                 ], [
                     'name' => $beer->name,
@@ -48,6 +50,20 @@ class FetchBeers extends Command
                     'image_url' => $beer->image_url,
                     'abv' => $beer->abv,
                 ]);
+
+                // create the pairing association
+                if(is_array($beer->food_pairing)) {
+                    $pairingIds = [];
+                    foreach($beer->food_pairing as $pairing) {
+                        $localPairing = Pairing::firstOrCreate([
+                            'name' => $pairing
+                        ]);
+                        $pairingIds[] = $localPairing->id;
+                    }
+
+                    // We want to remove any old pairings that no longer exist using sync
+                    $localBeer->pairings()->sync($pairingIds);
+                }
             });
 
             // keep a tally

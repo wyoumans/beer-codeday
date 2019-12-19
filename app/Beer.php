@@ -14,4 +14,12 @@ class Beer extends Model
         'image_url',
         'abv',
     ];
+
+    /**
+     * The pairings that belong to the beer.
+     */
+    public function pairings()
+    {
+        return $this->belongsToMany('App\Pairing');
+    }
 }
