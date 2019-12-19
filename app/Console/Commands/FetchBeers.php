@@ -33,7 +33,7 @@ class FetchBeers extends Command
         $this->line(PHP_EOL . 'Fetching the beer list' . PHP_EOL);
 
         $page = $count = 0;
-        $maxPages = 2;
+        $maxPages = 200; // prevent runaway
 
         do {
             // fetch the next page of beers
@@ -68,7 +68,7 @@ class FetchBeers extends Command
 
             // keep a tally
             $count += $beers->count();
-        } while($beers->count() > 0 && $page > $maxPages);
+        } while($beers->count() > 0 && $page < $maxPages);
 
         $this->line(PHP_EOL . "Complete. $count beers fetched." . PHP_EOL);
     }
@@ -111,8 +111,6 @@ class FetchBeers extends Command
      * @return Collection
      */
     private function fetchPage($page = 0) {
-        dump($page);
-
         // Fetch the beers list
         $response = $this->getData('beers', [
             'page' => $page
