@@ -1,2 +1,2 @@
 #!/bin/bash
-vendor/bin/phpunit tests/Feature --testdox --stop-on-failure
+vendor/bin/phpunit tests --testdox
