@@ -59,15 +59,15 @@ This API is open to the public without authentication.
 
 GET `/api/beers`
 
-# GET parameters
+##### GET parameters
 
 `page` *optional*
 
-# Responses
+##### Responses
 
 `200` success
 
-# Sample response
+##### Sample response
 
 ```
 {
@@ -140,17 +140,17 @@ GET `/api/beers`
 
 GET to `/api/beers/{id}`
 
-# GET parameters
+##### GET parameters
 
 `id` *required*
 
-# Responses
+##### Responses
 
 `404` beer not found
 
 `200` success
 
-# Sample response
+##### Sample response
 
 ```
 {
@@ -183,11 +183,11 @@ GET to `/api/beers/{id}`
 
 GET to `/api/beers/random`
 
-# Responses
+##### Responses
 
 `200` success
 
-# Sample response
+##### Sample response
 
 ```
 {
@@ -222,15 +222,15 @@ GET to `/api/beers/random`
 
 GET `/api/recipes`
 
-# GET parameters
+##### GET parameters
 
 `page` *optional*
 
-# Responses
+##### Responses
 
 `200` success
 
-# Sample response
+##### Sample response
 
 ```
 {
@@ -277,17 +277,17 @@ GET `/api/recipes`
 
 GET to `/api/recipes/{id}`
 
-# GET parameters
+##### GET parameters
 
 `id` *required*
 
-# Responses
+##### Responses
 
 `404` recipe not found
 
 `200` success
 
-# Sample response
+##### Sample response
 
 ```
 {
