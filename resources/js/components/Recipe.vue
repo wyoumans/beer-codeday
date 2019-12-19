@@ -11,9 +11,7 @@
       class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-1 flex-col justify-between leading-normal"
     >
       <div class="mb-8">
-        <h2 class="text-gray-900 font-bold text-xl mb-2">
-          {{ recipe.label }}
-        </h2>
+        <h2 class="text-gray-900 font-bold text-xl mb-2">{{ recipe.label }}</h2>
 
         <p class="text-gray-700 text-sm font-bold uppercase mb-2 break-all">{{ recipe.source }}</p>
 
@@ -33,7 +31,9 @@ export default {
 
   computed: {
     image() {
-      return this.recipe.image_url ? this.recipe.image_url : '/images/missing.png';
+      return this.recipe.image_url
+        ? this.recipe.image_url
+        : "/images/missing.png";
     }
   }
 };

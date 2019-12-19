@@ -6,7 +6,6 @@ use App\Beer;
 use App\Http\Resources\BeerCollection;
 use App\Http\Resources\BeerResource;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class BeerController extends Controller
 {

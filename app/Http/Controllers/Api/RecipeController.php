@@ -6,7 +6,6 @@ use App\Recipe;
 use App\Http\Resources\RecipeCollection;
 use App\Http\Resources\RecipeResource;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {

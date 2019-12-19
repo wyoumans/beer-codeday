@@ -9,12 +9,12 @@ require("./bootstrap");
 // libraries
 import Vue from "vue";
 import VueRouter from "vue-router";
-import VueProgressBar from 'vue-progressbar'
+import VueProgressBar from "vue-progressbar";
 
 const progressBarOptions = {
-    color: '#2c5282',
-    failedColor: 'red',
-    thickness: '4px',
+    color: "#2c5282",
+    failedColor: "red",
+    thickness: "4px"
 };
 
 Vue.use(VueRouter);
