@@ -1,0 +1,19 @@
+body {
+    @apply antialiased font-normal bg-gray-100 text-gray-700;
+}
+
+[v-cloak] {
+    @apply hidden;
+}
+
+h1, h2, h3, h4, h5 {
+    @apply font-normal text-gray-900;
+}
+
+a {
+    @apply text-orange-900 no-underline;
+
+    &:hover {
+        @apply text-orange-700;
+    }
+}

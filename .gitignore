@@ -10,3 +10,12 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+storage/testing.sqlite
+
+# compiled assets
+public/css/*
+public/js/*
+public/fonts/*
+public/images/*
+public/mix-manifest.json
+public/mix.js

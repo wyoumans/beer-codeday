@@ -1,1 +1,16 @@
-//
+@tailwind base;
+
+@import "partials/utilities/global";
+
+@tailwind components;
+
+@import "partials/config/variables";
+@import "partials/vendor/fontawesome/fontawesome";
+@import "partials/vendor/fontawesome/brands";
+@import "partials/vendor/fontawesome/solid";
+@import "partials/vendor/fontawesome/regular";
+@import "partials/vendor/fontawesome/light";
+
+@tailwind utilities;
+
+@import "partials/utilities/custom";
