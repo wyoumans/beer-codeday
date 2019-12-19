@@ -1,7 +1,7 @@
 <template>
   <div class="w-full md:w-1/2 flex flex-col lg:flex-row p-2 md:p-5">
     <router-link
-      class="block h-48 lg:h-auto lg:w-48 flex-none bg-contain bg-no-repeat bg-center rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden bg-gray-100 border-l border-t border-b border-gray-400"
+      class="block h-48 lg:h-auto lg:w-48 flex-none bg-contain bg-no-repeat bg-center rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden bg-gray-100 border lg:border-r-0 border-gray-400"
       :style="'background-image: url(\'' + image + '\');min-height:255px;'"
       :to="href"
     >
