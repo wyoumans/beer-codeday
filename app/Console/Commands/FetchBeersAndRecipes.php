@@ -64,34 +64,9 @@ class FetchBeersAndRecipes extends Command
                 // because of the low API rate limit in Edamam, we only run the query if the
                 // beer does not have any existing pairings
                 if (is_array($beer->food_pairing) && $localBeer->recipes()->count() == 0) {
-                    $recipeIds = [];
-                    foreach ($beer->food_pairing as $pairing) {
-                        $recipes = $this->getRecipes($pairing);
-
-                        if ($recipes && $recipes->count()) {
-                            $recipes->each(function ($recipe) use ($pairing, &$recipeIds) {
-                                // Edamam does not include a useful id,
-                                // so we'll create one by hashing the uri
-                                $id = md5($recipe->uri);
-
-                                $localRecipe = Recipe::firstOrCreate([
-                                    'edamam_id' => $id
-                                ], [
-                                    'url' => $recipe->url,
-                                    'label' => $recipe->label,
-                                    'source' => $recipe->source,
-                                    'image_url' => $recipe->image,
-                                    'share_url' => $recipe->shareAs,
-                                ]);
-
-                                // establish the relationship with the pairing as the pivot name
-                                $recipeIds[$localRecipe->id] = ['name' => $pairing];
-                            });
-                        }
-                    }
 
                     // We want to remove any old pairings that no longer exist using sync
-                    $localBeer->recipes()->sync($recipeIds);
+                    $localBeer->recipes()->sync($this->getRecipeIds($beer));
                 }
             });
 
@@ -100,6 +75,37 @@ class FetchBeersAndRecipes extends Command
         } while ($beers->count() > 0 && $page < $maxPages);
 
         $this->line(PHP_EOL . "Complete. $count beers fetched." . PHP_EOL);
+    }
+
+    private function getRecipeIds($beer)
+    {
+        $recipeIds = [];
+        foreach ($beer->food_pairing as $pairing) {
+            $recipes = $this->getRecipes($pairing);
+
+            if ($recipes && $recipes->count()) {
+                $recipes->each(function ($recipe) use ($pairing, &$recipeIds) {
+                    // Edamam does not include a useful id,
+                    // so we'll create one by hashing the uri
+                    $id = md5($recipe->uri);
+
+                    $localRecipe = Recipe::firstOrCreate([
+                        'edamam_id' => $id
+                    ], [
+                        'url' => $recipe->url,
+                        'label' => $recipe->label,
+                        'source' => $recipe->source,
+                        'image_url' => $recipe->image,
+                        'share_url' => $recipe->shareAs,
+                    ]);
+
+                    // establish the relationship with the pairing as the pivot name
+                    $recipeIds[$localRecipe->id] = ['name' => $pairing];
+                });
+            }
+        }
+
+        return $recipeIds;
     }
 
     /**
