@@ -1,5 +1,10 @@
 # Beer CodeDay
 
+[![Code Climate Maintainability](https://img.shields.io/codeclimate/maintainability/wyoumans/beer-codeday.svg)](https://codeclimate.com/github/wyoumans/beer-codeday)
+[![Code Climate Issues](https://img.shields.io/codeclimate/issues/wyoumans/beer-codeday.svg)](https://codeclimate.com/github/wyoumans/beer-codeday)
+[![Code Climate Tech Debt](https://img.shields.io/codeclimate/tech-debt/wyoumans/beer-codeday.svg)](https://codeclimate.com/github/wyoumans/beer-codeday)
+[![Code Climate Code Coverage](https://img.shields.io/codeclimate/coverage/wyoumans/beer-codeday.svg)](https://codeclimate.com/github/wyoumans/beer-codeday)
+
 Built on Laravel 6 & Vue 2
 
 ## Getting Started
