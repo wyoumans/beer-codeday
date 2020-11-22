@@ -19,3 +19,5 @@ public/fonts/*
 public/images/*
 public/mix-manifest.json
 public/mix.js
+
+.php_cs.cache

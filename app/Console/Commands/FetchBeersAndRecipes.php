@@ -74,7 +74,7 @@ class FetchBeersAndRecipes extends Command
             $count += $beers->count();
         } while ($beers->count() > 0 && $page < $maxPages);
 
-        $this->line(PHP_EOL . "Complete. $count beers fetched." . PHP_EOL);
+        $this->line(PHP_EOL . "Complete. ${count} beers fetched." . PHP_EOL);
     }
 
     private function getRecipeIds($beer)
@@ -145,7 +145,7 @@ class FetchBeersAndRecipes extends Command
 
             // Stop execution if we did not get the okay from the server
             if ($code !== 200) {
-                throw new \Exception("$code response received from the punk api server");
+                throw new \Exception("${code} response received from the punk api server");
             }
 
             return collect($json);

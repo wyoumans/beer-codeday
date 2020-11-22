@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Beer;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\BeerCollection;
 use App\Http\Resources\BeerResource;
-use App\Http\Controllers\Controller;
 
 class BeerController extends Controller
 {

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Recipe;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipeCollection;
 use App\Http\Resources\RecipeResource;
-use App\Http\Controllers\Controller;
+use App\Recipe;
 
 class RecipeController extends Controller
 {
