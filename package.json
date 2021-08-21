@@ -18,7 +18,7 @@
         "browser-sync-webpack-plugin": "2.2.2"
     },
     "dependencies": {
-        "axios": "0.19.0",
+        "axios": "0.21.1",
         "cross-env": "6.0.3",
         "laravel-mix": "5.0.1",
         "laravel-mix-purgecss": "4.2.0",
